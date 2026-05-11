@@ -1,13 +1,5 @@
 ✨ Explorador de APIs ✨
 
-███████╗██╗  ██╗██████╗ ██╗      ██████╗ ██████╗  █████╗ ██████╗  ██████╗ 
-██╔════╝██║  ██║██╔══██╗██║     ██╔═══██╗██╔══██╗██╔══██╗██╔══██╗██╔═══██╗
-███████╗███████║██████╔╝██║     ██║   ██║██████╔╝███████║██████╔╝██║   ██║
-╚════██║██╔══██║██╔═══╝ ██║     ██║   ██║██╔═══╝ ██╔══██║██╔═══╝ ██║   ██║
-███████║██║  ██║██║     ███████╗╚██████╔╝██║     ██║  ██║██║     ╚██████╔╝
-╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚═╝      ╚═════╝ 
-
-
 📘 Descripción
 Aplicación desarrollada en React + TypeScript con Vite como bundler.
 El proyecto consume una API pública (ejemplo: Rick and Morty API) y permite buscar personajes, mostrar resultados en tarjetas y navegar con tipado estricto.

@@ -94,3 +94,11 @@ export function CharacterDetail() {
     </div>
   );
 }
+
+export function Footer() {
+  return (
+    <footer className="app-footer">
+      <p>© 2026 Rick & Morty API Explorer</p>
+    </footer>
+  );
+}

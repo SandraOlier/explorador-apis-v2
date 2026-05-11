@@ -17,7 +17,6 @@ Fetch API
 
 Rick and Morty API
 
-📂 Estructura del Proyecto
 
 ## 📂 Estructura del Proyecto
 

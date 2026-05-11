@@ -19,6 +19,9 @@ Rick and Morty API
 
 📂 Estructura del Proyecto
 
+## 📂 Estructura del Proyecto
+
+```plaintext
 explorador-apis-v2/
  ├── public/              # Recursos estáticos
  ├── src/
@@ -30,6 +33,10 @@ explorador-apis-v2/
  ├── package.json         # Dependencias y scripts
  ├── vite.config.ts       # Configuración de Vite
  └── README.md            # Documentación del proyecto
+
+
+
+
 
 
 ⚙️ Funcionalidades

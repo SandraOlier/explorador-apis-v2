@@ -9,7 +9,7 @@ interface GridResultadosProps {
 export function GridResultados({ characters, hasError }: GridResultadosProps) {
   if (characters.length === 0) {
     if (hasError) {
-      return null;
+      return <p className="error">Ocurrió un error al cargar los personajes.</p>;
     }
 
     return <p className="empty-state">No hay personajes para mostrar.</p>;

@@ -1,44 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { Character } from "../types/Character";
-
-const API_URL = import.meta.env.VITE_API_URL ?? "https://rickandmortyapi.com/api/character";
+import { useCharacterDetail } from "../hooks/useCharacterDetail";
 
 export function CharacterDetail() {
   const { id } = useParams<{ id: string }>();
-  const [character, setCharacter] = useState<Character | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadCharacter = async () => {
-      if (!id) {
-        setError("ID de personaje no válido.");
-        return;
-      }
-
-      setLoading(true);
-      setError(null);
-
-      try {
-        const res = await fetch(`${API_URL}/${id}`);
-
-        if (!res.ok) {
-          throw new Error(`Error ${res.status}`);
-        }
-
-        const data = await res.json();
-        setCharacter(data);
-      } catch (err) {
-        setError("No se pudo cargar el personaje.");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadCharacter();
-  }, [id]);
+  const { character, loading, error } = useCharacterDetail(id);
 
   if (loading) {
     return <p className="loading">Cargando detalles...</p>;
@@ -94,4 +60,3 @@ export function CharacterDetail() {
     </div>
   );
 }
-

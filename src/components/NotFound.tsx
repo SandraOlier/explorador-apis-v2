@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function NotFound() {
   return (
-    <div className="app-shell">
+    <div className="app-shell not-found">
       <section className="hero-section">
         <div>
           <p className="eyebrow">Página no encontrada</p>
@@ -10,7 +10,7 @@ export function NotFound() {
           <p className="subtitle">
             La página que buscas no existe. Regresa al inicio para continuar con la búsqueda de personajes.
           </p>
-          <Link to="/" className="back-link">
+          <Link to="/" className="back-link" aria-label="Volver a la página principal">
             ← Volver a la página principal
           </Link>
         </div>

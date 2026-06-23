@@ -1,17 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home.tsx";
-import { CharacterDetail } from "./components/CharacterDetail.tsx";
-import { NotFound } from "./components/NotFound.tsx";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { CharacterDetail } from "./components/CharacterDetail";
+import { NotFound } from "./components/NotFound";
+import { Contacto } from "./pages/Contacto";
+import { Favoritos } from "./pages/Favoritos";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/character/:id" element={<CharacterDetail />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/character/:id" element={<CharacterDetail />} />
+      <Route path="/contacto" element={<Contacto />} />
+      <Route path="/favoritos" element={<Favoritos />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

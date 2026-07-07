@@ -1,19 +1,21 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { CharacterDetail } from "./components/CharacterDetail";
-import { NotFound } from "./components/NotFound";
-import { Contacto } from "./pages/Contacto";
-import { Favoritos } from "./pages/Favoritos";
+import Home from "./pages/Home";
+import CharacterDetail from "./pages/CharacterDetail";
+import Contacto from "./pages/Contacto";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/character/:id" element={<CharacterDetail />} />
-      <Route path="/contacto" element={<Contacto />} />
-      <Route path="/favoritos" element={<Favoritos />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/character/:id" element={<CharacterDetail />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 

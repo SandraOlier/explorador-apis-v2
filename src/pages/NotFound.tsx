@@ -1,12 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
-export function NotFound() {
+function NotFound() {
   return (
-    <div style={{ textAlign: "center", marginTop: "3rem" }}>
-      <h1>404 - Página no encontrada 🚀</h1>
-      <p>Ups... parece que esta ruta no existe.</p>
-      <Link to="/">Volver al inicio</Link>
+    <div>
+      <h2>Página no encontrada</h2>
+      <p>La ruta ingresada no existe.</p>
     </div>
   );
 }
+
+export default NotFound;

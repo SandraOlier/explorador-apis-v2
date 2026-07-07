@@ -1,34 +1,33 @@
-import { useEffect, useState } from "react";
-import type { Character } from "../types/Character";
+import { useState, useEffect } from "react";
 
-const API_URL =
-  import.meta.env.VITE_API_URL ?? "https://rickandmortyapi.com/api/character";
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+  status: string;
+  species: string;
+}
 
-export function useCharacterDetail(id: string) {
+export default function useCharacterDetail(id: string) {
   const [character, setCharacter] = useState<Character | null>(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchDetail = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const res = await fetch(`${API_URL}/${id}`);
-        if (!res.ok) throw new Error(`Error ${res.status}`);
-
-        const data = await res.json();
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
         setCharacter(data);
-      } catch {
-        setError("No se pudo cargar el detalle del personaje.");
-      } finally {
         setLoading(false);
-      }
-    };
-
-    fetchDetail();
+      })
+      .catch(() => {
+        setError("Error al cargar detalle");
+        setLoading(false);
+      });
   }, [id]);
 
-  return { character, error, loading };
+  return { character, loading, error };
 }
+
+
+  

@@ -1,26 +1,27 @@
-import type { Character } from "../types/Character";
-import { CardItem } from "./CardItem";
+import { Link } from "react-router-dom";
 
-interface GridResultadosProps {
-  characters: Character[];
-  hasError?: boolean;
+interface Character {
+  id: number;
+  name: string;
+  image: string;
 }
 
-export function GridResultados({ characters, hasError }: GridResultadosProps) {
-  if (characters.length === 0) {
-    if (hasError) {
-      return <p className="error">Ocurrió un error al cargar los personajes.</p>;
-    }
+interface Props {
+  character: Character;
+}
 
-    return <p className="empty-state">No hay personajes para mostrar.</p>;
-  }
-
+function CardItem({ character }: Props) {
   return (
-    <div className="grid">
-      {characters.map((c) => (
-        <CardItem key={c.id} character={c} />
-      ))}
+    <div className="card">
+      <h3>{character.name}</h3>
+      <img src={character.image} alt={character.name} />
+      <Link to={`/character/${character.id}`}>
+        <button>Ver detalle</button>
+      </Link>
     </div>
   );
 }
+
+export default CardItem;
+
 

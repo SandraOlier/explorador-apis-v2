@@ -1,42 +1,29 @@
-import { useEffect, useState } from "react";
-import type { Character } from "../types/Character";
+import { useState, useEffect } from "react";
 
-const API_URL =
-  import.meta.env.VITE_API_URL ?? "https://rickandmortyapi.com/api/character";
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+}
 
 export function useCharacters() {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [search, setSearch] = useState<string>("");
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const query = search ? `/?name=${encodeURIComponent(search)}` : "";
-        const res = await fetch(`${API_URL}${query}`);
-
-        if (!res.ok) throw new Error(`Error ${res.status}`);
-
-        const data = await res.json();
-        setCharacters(data.results ?? []);
-
-        if (!data.results || data.results.length === 0) {
-          setError("No se encontraron personajes.");
-        }
-      } catch {
-        setCharacters([]);
-        setError("No se encontraron resultados o hay un problema con la API.");
-      } finally {
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((res) => res.json())
+      .then((data) => {
+        setCharacters(data.results);
         setLoading(false);
-      }
-    };
+      })
+      .catch(() => {
+        setError("Error al cargar personajes");
+        setLoading(false);
+      });
+  }, []);
 
-    fetchData();
-  }, [search]);
-
-  return { characters, search, setSearch, error, loading };
+  return { characters, loading, error };
 }
+

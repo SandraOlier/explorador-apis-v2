@@ -1,32 +1,26 @@
-import { useFavorites } from "../context/FavoritesContext";
+import { Link } from "react-router-dom";
 
-export function CardItem({ character }: { character: Character }) {
-  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+}
 
+interface Props {
+  character: Character;
+}
+
+function CardItem({ character }: Props) {
   return (
     <div className="card">
+      <h3>{character.name}</h3>
       <img src={character.image} alt={character.name} />
-      <div className="card-info">
-        <h3>{character.name}</h3>
-        <p>{character.species}</p>
-        <div className="card-actions">
-          {isFavorite(character.id) ? (
-            <button
-              className="card-button"
-              onClick={() => removeFavorite(character.id)}
-            >
-              Quitar Favorito
-            </button>
-          ) : (
-            <button
-              className="card-button"
-              onClick={() => addFavorite(character)}
-            >
-              Agregar Favorito
-            </button>
-          )}
-        </div>
-      </div>
+      <Link to={`/character/${character.id}`}>
+        <button>Ver detalle</button>
+      </Link>
     </div>
   );
 }
+
+export default CardItem;
+

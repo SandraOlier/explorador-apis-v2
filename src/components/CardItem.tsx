@@ -12,12 +12,20 @@ function CardItem({ character }: Props) {
 
   return (
     <article className="card">
-      <img src={character.image} alt={character.name} />
+      <Link
+        className="card-visual-link"
+        to={`/character/${character.id}`}
+        aria-label={`Ver detalle de ${character.name}`}
+      >
+        <img src={character.image} alt={character.name} />
+      </Link>
       <div className="card-info">
-        <h3>{character.name}</h3>
+        <Link className="card-title-link" to={`/character/${character.id}`}>
+          <h3>{character.name}</h3>
+        </Link>
         <p>{character.species}</p>
         <div className="card-actions">
-          <Link className="card-button" to={`/item/${character.id}`}>
+          <Link className="card-button" to={`/character/${character.id}`}>
             Ver detalle
           </Link>
           <button

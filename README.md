@@ -40,19 +40,28 @@ src/
 npm install
 ```
 
-3. Inicia el proyecto en el puerto 5179 para que quede alineado con la vista previa utilizada en esta entrega:
+3. Inicia la aplicación con:
 
 ```bash
-npm run dev -- --host 0.0.0.0 --port 5179 --strictPort
+npm run dev
 ```
 
 4. Abre la aplicación en tu navegador en:
 
 ```text
-http://127.0.0.1:5179/
+http://localhost:5173/
 ```
 
-> Si prefieres usar el puerto por defecto de Vite, también funciona con `npm run dev`, pero en esta entrega se recomienda el puerto 5179 para mantener la vista consistente.
+> El proyecto está preparado para arrancar correctamente con `npm run dev`. Si el puerto 5173 está ocupado, Vite elegirá otro disponible automáticamente.
+
+## Funcionalidades entregadas
+
+- Exploración de personajes de la API de Rick and Morty.
+- Búsqueda por nombre en tiempo real.
+- Vista detallada al hacer clic en cada personaje.
+- Navegación desde la tarjeta, el nombre y el botón "Ver detalle".
+- Gestión de favoritos con persistencia en localStorage.
+- Página de contacto con validaciones.
 
 ## Scripts disponibles
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Contacto() {
   const [formData, setFormData] = useState({ nombre: "", email: "", mensaje: "" });
@@ -104,9 +105,14 @@ function Contacto() {
           {errors.mensaje && <span className="error-message">{errors.mensaje}</span>}
         </div>
 
-        <button className="submit-button" type="submit">
-          Enviar
-        </button>
+        <div className="form-actions">
+          <button className="submit-button" type="submit">
+            Enviar
+          </button>
+          <Link className="secondary-link-button" to="/">
+            Volver a inicio
+          </Link>
+        </div>
       </form>
     </div>
   );

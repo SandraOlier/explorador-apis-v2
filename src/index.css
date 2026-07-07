@@ -253,7 +253,31 @@ input {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(109, 40, 217, 0.28);
 }
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
 
+.secondary-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.secondary-link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(109, 40, 217, 0.14);
+}
 .search-panel {
   display: flex;
   flex-direction: column;
@@ -335,6 +359,38 @@ input {
   display: block;
   border-bottom: 1px solid rgba(139, 92, 246, 0.12);
   transition: transform 0.3s ease;
+}
+
+.card-visual-link {
+  display: block;
+  text-decoration: none;
+}
+
+.card-title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.card-title-link:hover {
+  color: var(--accent-strong);
+  transform: translateX(2px);
+}
+
+.card-title-link h3 {
+  position: relative;
+  display: inline-block;
+}
+
+.card-title-link h3::after {
+  content: "↗";
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  opacity: 0.9;
 }
 
 .card:hover img {

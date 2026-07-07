@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import CharacterDetail from "./pages/CharacterDetail";
 import Contacto from "./pages/Contacto";
+import Favoritos from "./pages/Favoritos";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/character/:id" element={<CharacterDetail />} />
         <Route path="/item/:id" element={<CharacterDetail />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/favoritos" element={<Favoritos />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </FavoritesProvider>

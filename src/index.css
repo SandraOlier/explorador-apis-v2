@@ -63,10 +63,20 @@ input {
 .hero-section {
   padding: 32px;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(248,244,255,0.94));
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(139, 92, 246, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 35%);
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -105,7 +115,7 @@ input {
   padding: 18px 24px;
   margin-bottom: 18px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(139, 92, 246, 0.16);
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px);
@@ -130,11 +140,12 @@ input {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .navbar a:hover {
   color: var(--accent-strong);
+  transform: translateY(-1px);
 }
 
 .navbar span {
@@ -233,8 +244,9 @@ input {
 /* ============= GRID & CARDS ============= */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
 .card {
@@ -246,6 +258,8 @@ input {
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 100%;
+  position: relative;
 }
 
 .card:hover {
@@ -258,13 +272,14 @@ input {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.12);
 }
 
 .card-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 18px 18px 20px;
+  padding: 20px 20px 22px;
   flex: 1;
 }
 
@@ -303,6 +318,7 @@ input {
   border: 1px solid rgba(139, 92, 246, 0.2);
   cursor: pointer;
   transition: all 0.2s ease;
+  flex: 1 1 140px;
 }
 
 .card-button:hover {
@@ -330,6 +346,10 @@ input {
   background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(139, 92, 246, 0.16);
   box-shadow: var(--shadow);
+}
+
+.detail-card:first-child {
+  padding: 16px;
 }
 
 .detail-card img {
@@ -414,7 +434,7 @@ footer p {
 
 .app-footer {
   margin-top: 40px;
-  padding: 32px 0;
+  padding: 32px 0 8px;
   text-align: center;
   border-top: 2px solid rgba(170, 59, 255, 0.2);
   color: var(--text);
@@ -442,6 +462,27 @@ footer p {
   color: var(--text-secondary);
   font-weight: 600;
   letter-spacing: 0.2px;
+}
+
+.empty-state-card {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(139, 92, 246, 0.16);
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.empty-state-card h3 {
+  margin: 0 0 8px;
+  color: var(--text-dark);
+}
+
+.empty-state-card p {
+  margin: 0;
+  color: var(--text-secondary);
 }
 
 .footer-divider {
@@ -511,9 +552,18 @@ footer p {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow);
   border: 1px solid rgba(139, 92, 246, 0.14);
-  max-width: 460px;
+  max-width: 500px;
   margin: 0 auto;
   width: 100%;
+}
+
+.success-message {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+  font-weight: 700;
+  border: 1px solid rgba(22, 163, 74, 0.2);
 }
 
 .form-group {
@@ -568,7 +618,20 @@ footer p {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.error-message {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+  font-weight: 700;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
 .submit-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(109, 40, 217, 0.22);
+}
+
+.submit-button:active {
+  transform: translateY(0);
 }

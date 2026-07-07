@@ -12,6 +12,9 @@ function Navbar() {
           <Link to="/">Inicio</Link>
         </li>
         <li>
+          <Link to="/favoritos">Favoritos</Link>
+        </li>
+        <li>
           <Link to="/contacto">Contacto</Link>
         </li>
         <li>

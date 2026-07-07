@@ -2,16 +2,47 @@ import { useState } from "react";
 
 function Contacto() {
   const [formData, setFormData] = useState({ nombre: "", email: "", mensaje: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({ nombre: "", email: "", mensaje: "" });
+
+  const validate = (values: typeof formData) => {
+    const nextErrors = {
+      nombre: values.nombre.trim() ? "" : "Ingresa tu nombre.",
+      email: values.email.trim() ? "" : "Ingresa tu correo.",
+      mensaje: values.mensaje.trim() ? "" : "Escribe un mensaje.",
+    };
+
+    if (values.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+      nextErrors.email = "Ingresa un correo válido.";
+    }
+
+    return nextErrors;
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const nextData = { ...formData, [name]: value };
+    setFormData(nextData);
+    setErrors(validate(nextData));
+    if (submitted) {
+      setSubmitted(false);
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const nextErrors = validate(formData);
+    setErrors(nextErrors);
+
+    const hasErrors = Object.values(nextErrors).some(Boolean);
+    if (hasErrors) {
+      return;
+    }
+
     console.log("Datos enviados:", formData);
+    setSubmitted(true);
     setFormData({ nombre: "", email: "", mensaje: "" });
+    setErrors({ nombre: "", email: "", mensaje: "" });
   };
 
   return (
@@ -23,6 +54,8 @@ function Contacto() {
       </section>
 
       <form className="contact-form" onSubmit={handleSubmit}>
+        {submitted && <div className="success-message">Mensaje enviado con éxito ✅</div>}
+
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
           <div className="input-wrapper">
@@ -35,6 +68,7 @@ function Contacto() {
               placeholder="Tu nombre"
             />
           </div>
+          {errors.nombre && <span className="error-message">{errors.nombre}</span>}
         </div>
 
         <div className="form-group">
@@ -52,6 +86,7 @@ function Contacto() {
               placeholder="Tu email"
             />
           </div>
+          {errors.email && <span className="error-message">{errors.email}</span>}
         </div>
 
         <div className="form-group">
@@ -66,6 +101,7 @@ function Contacto() {
               placeholder="¿En qué te ayudamos?"
             />
           </div>
+          {errors.mensaje && <span className="error-message">{errors.mensaje}</span>}
         </div>
 
         <button className="submit-button" type="submit">

@@ -1,27 +1,20 @@
-import { Link } from "react-router-dom";
-
-interface Character {
-  id: number;
-  name: string;
-  image: string;
-}
+import CardItem from "./CardItem";
+import type { Character } from "../types/Character";
 
 interface Props {
-  character: Character;
+  characters: Character[];
 }
 
-function CardItem({ character }: Props) {
+function GridResultados({ characters }: Props) {
   return (
-    <div className="card">
-      <h3>{character.name}</h3>
-      <img src={character.image} alt={character.name} />
-      <Link to={`/character/${character.id}`}>
-        <button>Ver detalle</button>
-      </Link>
+    <div className="grid">
+      {characters.map((character) => (
+        <CardItem key={character.id} character={character} />
+      ))}
     </div>
   );
 }
 
-export default CardItem;
+export default GridResultados;
 
 

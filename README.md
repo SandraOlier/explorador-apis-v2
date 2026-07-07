@@ -40,13 +40,19 @@ src/
 npm install
 ```
 
-3. Inicia el proyecto:
+3. Inicia el proyecto en el puerto 5179 para que quede alineado con la vista previa utilizada en esta entrega:
 
 ```bash
-npm run dev
+npm run dev -- --host 0.0.0.0 --port 5179 --strictPort
 ```
 
-4. Abre la aplicación en tu navegador en la URL que indique Vite.
+4. Abre la aplicación en tu navegador en:
+
+```text
+http://127.0.0.1:5179/
+```
+
+> Si prefieres usar el puerto por defecto de Vite, también funciona con `npm run dev`, pero en esta entrega se recomienda el puerto 5179 para mantener la vista consistente.
 
 ## Scripts disponibles
 
